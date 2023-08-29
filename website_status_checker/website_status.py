@@ -11,7 +11,7 @@ test_interval - Time interval between status checks in seconds
 song_looping_duration - Duration to loop the song playback in seconds
 """
 url = "https://tryhackme.com/" 
-song = "SHEESH.mp3"
+song = "uptime_song.mp3"
 test_interval = 5
 song_looping_duration = 180
 
