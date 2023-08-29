@@ -2,10 +2,19 @@ import requests
 from pygame import mixer
 import time
 
-# Define URL to test
-url = "https://tryhackme.com/" 
+"""
+Customizable configuration variables
 
+url - URL of the site being monitored
+song - Path to song file played on success
+test_interval - Time interval between status checks in seconds
+song_looping_duration - Duration to loop the song playback in seconds
+"""
+url = "https://tryhackme.com/" 
 song = "SHEESH.mp3"
+test_interval = 5
+song_looping_duration = 180
+
 while True:
   try:
     result = requests.get(url)
@@ -16,7 +25,7 @@ while True:
 
       # Play song for 3 minutes
       start_time = time.time()
-      while time.time() - start_time < 180:  
+      while time.time() - start_time < song_looping_duration:  
         if not mixer.music.get_busy():
           mixer.music.play()
 
@@ -28,4 +37,4 @@ while True:
     print("Site is down...")
 
   # Keep testing every 5 seconds  
-  time.sleep(5)
+  time.sleep(test_interval)
